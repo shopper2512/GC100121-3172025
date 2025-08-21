@@ -17,7 +17,7 @@
 					<div class="col"></div>
 					<div class="col">
 						<div class="align-items-center">
-							<p>RM100420 KRISTA LORENA RODRIGUEZ MARTINEZ</p>
+							<p>GC100121 VICTOR ANDRE MEJIA CASTELLANOSZ</p>
 							<form name="frm_login" id="frm_login" method="post" action="core/process.php">
 								<table>
 									<thead>
