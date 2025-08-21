@@ -2,7 +2,7 @@
 <html lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<title>[Vitor andre mejia castellanos GC100121]</title>
+		<title>GC100121 VICTOR ANDRE MEJIA CASTELLANOS</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -17,7 +17,7 @@
 					<div class="col"></div>
 					<div class="col">
 						<div class="align-items-center">
-							<p>[colocar su nombre completo y su número de carnet]</p>
+							<p>RM100420 KRISTA LORENA RODRIGUEZ MARTINEZ</p>
 							<form name="frm_login" id="frm_login" method="post" action="core/process.php">
 								<table>
 									<thead>
@@ -59,50 +59,47 @@
 				</div>
 			</div>
 		</div>
-        <script>
-           funcion enviar_datos(u,p){
+		<script>
+			function enviar_datos(u,p){
 
-             $.post(
-			 $("#frm_login").attr("action"),
-			 {
-			  txt_usuario: u,
-			  txt_password: p
-
-			 } 
-			 
-		   ).done(function(datos){
-                window.location.replace(datos.data.url+"?token="+datos.data.token);
-			}).fail(funcion(xhr,status,error){
-				$(".mensaje").html(hxr.responseJSON.error.message)
-			});
-
-            
-			
-			$(document).ready(funcion(){
-				$("btn_entrar").click(function(){
-					enviar_datos($("#txt_usuario"),$("#txt_password"));
-					
+				$.post(
+					$("#frm_login").attr("action"), //Ruta para envío de datos (URI)
+					{
+						txt_usuario: u,
+						txt_password: p
+					}
+				).done(function(datos){
+					window.location.replace(datos.data.url+"?token="+datos.data.token);
+				}).fail(function(xhr,status,error){
+					$(".mensaje").html(xhr.responseJSON.error.message)
 				});
-               $("#txt_password").keypress(funcion(event){
+			}
+			$(document).ready(function(){
+					//SI LA PERSONA PRESIONA EL BOTÓN "INICIAR SESIÓN"
+					$("#btn_entrar").click(function(){
+						//SE EJECUTA LA FUNCIÓN enviar_datos()
+						enviar_datos($("#txt_usuario").val(),$("#txt_password").val());
+					});
 
-				if(event.which == 13){
-
-					enviar_datos($("#txt_usuario"),$("#txt_password"));
-				}
-			});
-				 $("#txt_usuario").keypress(funcion(event){
-
-				if(event.which == 13){
-
-					enviar_datos($("#txt_usuario"),$("#txt_password"));
-				}
-			   });
-
-			});
-        
-		   }
+					//SI LA PERSONA PRESIONA "ENTER" MIENTRAS EL FOCUS ESTÁ EN EL CAMPO
+					// txt_usuario
+					$("#txt_usuario").keypress(function(event){
+						//SE EVALÚA SI LA TECLA PRESIONADA ES "ENTER"
+						if(event.which == 13){
+							//SE EJECUTA LA FUNCIÓN enviar_datos()
+							enviar_datos($("#txt_usuario").val(),$("#txt_password").val());
+						}
+					});
+					//SI LA PERSONA PRESIONA "ENTER" MIENTRAS EL FOCUS ESTÁ EN EL CAMPO
+					// txt_password
+					$("#txt_password").keypress(function(event){
+						//SE EVALÚA SI LA TECLA PRESIONADA ES "ENTER"
+						if(event.which == 13){
+							//SE EJECUTA LA FUNCIÓN enviar_datos()
+							enviar_datos($("#txt_usuario").val(),$("#txt_password").val());
+						}
+					});
+				});
 		</script>
-
-
 	</body>
 </html>
